@@ -1,0 +1,16 @@
+application:
+  env: local
+  debug: true
+
+handler:
+  context-timeout: 3s
+
+token:
+  access_ttl: 5h
+  refresh_ttl: 8760h
+
+server:
+  write-timeout: 3s
+  read-timeout: 3s
+  port: 8091
+  host: localhost
