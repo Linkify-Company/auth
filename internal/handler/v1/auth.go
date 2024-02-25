@@ -14,8 +14,8 @@ import (
 )
 
 type CheckAuthResponse struct {
-	User  *domain.AuthData `json:"user,omitempty"`
-	Token string           `json:"token,omitempty"`
+	*domain.AuthData
+	Token string `json:"token,omitempty"`
 }
 
 func initAuth(h *handler, router *mux.Router) {
@@ -56,7 +56,7 @@ func (h *handler) Login(w http.ResponseWriter, r *http.Request) {
 func (h *handler) CheckAuth(w http.ResponseWriter, r *http.Request) {
 	req, e := h.service.GetToken(r)
 	if e != nil || req == "" {
-		response.Error(w, errify.NewBadRequestError(e.Error(),
+		response.Error(w, errify.NewUnauthorizedError(e.Error(),
 			service.ErrInvalidCredentials.Error(), "CheckAuth"), h.log)
 		return
 	}
@@ -87,8 +87,8 @@ func (h *handler) CheckAuth(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 			response.Ok(w, response.NewSend(CheckAuthResponse{
-				User:  user,
-				Token: token,
+				AuthData: user,
+				Token:    token,
 			}, "Authorization successfully", http.StatusOK), h.log)
 			return
 		}
@@ -96,14 +96,14 @@ func (h *handler) CheckAuth(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	response.Ok(w, response.NewSend(CheckAuthResponse{
-		User: user,
+		AuthData: user,
 	}, "Authorization successfully", http.StatusOK), h.log)
 }
 
 func (h *handler) Logout(w http.ResponseWriter, r *http.Request) {
 	req, e := h.service.GetToken(r)
 	if e != nil || req == "" {
-		response.Error(w, errify.NewBadRequestError(e.Error(),
+		response.Error(w, errify.NewUnauthorizedError(e.Error(),
 			service.ErrInvalidCredentials.Error(), "CheckAuth"), h.log)
 		return
 	}

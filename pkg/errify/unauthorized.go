@@ -31,7 +31,7 @@ func (m *UnauthorizedError) Details() string {
 }
 
 func (m *UnauthorizedError) Code() int {
-	return http.StatusBadRequest
+	return http.StatusUnauthorized
 }
 
 func (m *UnauthorizedError) Read() string {
