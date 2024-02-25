@@ -4,11 +4,11 @@ import (
 	"auth/internal/domain"
 	hr "auth/internal/handler"
 	"auth/internal/service"
-	"auth/pkg/errify"
-	"auth/pkg/response"
 	"context"
 	"encoding/json"
 	"errors"
+	"github.com/Linkify-Company/common_utils/errify"
+	"github.com/Linkify-Company/common_utils/response"
 	"github.com/gorilla/mux"
 	"net/http"
 )
