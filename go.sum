@@ -4,6 +4,8 @@ github.com/BurntSushi/toml v1.2.1 h1:9F2/+DoOYIOksmaJFPw1tGFy1eDnIJXg+UHjuD8lTak
 github.com/BurntSushi/toml v1.2.1/go.mod h1:CxXYINrC8qIiEnFrOxCa7Jy5BFHlXnUU2pbicEuybxQ=
 github.com/Linkify-Company/common_utils v0.0.0-20240225084752-99f0c96afbcb h1:jMur8NLJagJ4eqIgf6GZb70cyzlTCFuYRx5Qj7T5eSI=
 github.com/Linkify-Company/common_utils v0.0.0-20240225084752-99f0c96afbcb/go.mod h1:Yr/jB/opAULyKVY0dkv3f0NcpsyPBlgX69Yt5TLvbeQ=
+github.com/Linkify-Company/common_utils v0.0.0-20240225121529-c294848b1224 h1:X0T0yCurs2GsVBnQTYlZG59sDJcMyOB813bHnYLD1qs=
+github.com/Linkify-Company/common_utils v0.0.0-20240225121529-c294848b1224/go.mod h1:Yr/jB/opAULyKVY0dkv3f0NcpsyPBlgX69Yt5TLvbeQ=
 github.com/Microsoft/go-winio v0.6.1 h1:9/kr64B9VUZrLm5YYwbGtUJnMgqWVOdUAXu6Migciow=
 github.com/Microsoft/go-winio v0.6.1/go.mod h1:LRdKpFKfdobln8UmuiYcKPot9D2v6svN5+sAH+4kjUM=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
