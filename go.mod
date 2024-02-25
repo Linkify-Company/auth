@@ -1,6 +1,6 @@
 module auth
 
-go 1.21
+go 1.21.4
 
 require (
 	github.com/fatih/color v1.16.0
@@ -18,6 +18,7 @@ require (
 
 require (
 	github.com/BurntSushi/toml v1.2.1 // indirect
+	github.com/Linkify-Company/common_utils v0.0.0-20240225061330-1ca13f08d744 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect

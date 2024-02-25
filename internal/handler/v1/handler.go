@@ -4,9 +4,9 @@ import (
 	"auth/internal/config"
 	hr "auth/internal/handler"
 	"auth/internal/service"
-	"auth/pkg/errify"
-	"auth/pkg/logger"
 	"fmt"
+	"github.com/Linkify-Company/common_utils/errify"
+	"github.com/Linkify-Company/common_utils/logger"
 	"github.com/gorilla/mux"
 	"net/http"
 )

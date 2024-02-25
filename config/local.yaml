@@ -1,5 +1,5 @@
 application:
-  env: local
+  env: dev
   debug: true
 
 handler:
