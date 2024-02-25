@@ -1,14 +1,15 @@
 module auth
 
-go 1.21
+go 1.21.4
+
+toolchain go1.21.5
 
 require (
-	github.com/fatih/color v1.16.0
+	github.com/Linkify-Company/common_utils v0.0.0-20240225084752-99f0c96afbcb
 	github.com/go-playground/validator/v10 v10.18.0
 	github.com/go-redis/redis v6.15.9+incompatible
 	github.com/golang-jwt/jwt/v5 v5.2.0
 	github.com/golang-migrate/migrate/v4 v4.17.0
-	github.com/google/uuid v1.6.0
 	github.com/gorilla/mux v1.8.1
 	github.com/ilyakaznacheev/cleanenv v1.5.0
 	github.com/jackc/pgx/v5 v5.5.3
@@ -18,11 +19,11 @@ require (
 
 require (
 	github.com/BurntSushi/toml v1.2.1 // indirect
-	github.com/Linkify-Company/auth-client v0.0.0-20240225073652-b84537fc605a // indirect
-	github.com/Linkify-Company/common_utils v0.0.0-20240225074153-7ca574cab4ac // indirect
+	github.com/fatih/color v1.16.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
+	github.com/google/uuid v1.6.0 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
