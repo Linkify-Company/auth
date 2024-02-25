@@ -56,7 +56,7 @@ func (h *handler) Login(w http.ResponseWriter, r *http.Request) {
 func (h *handler) CheckAuth(w http.ResponseWriter, r *http.Request) {
 	req, e := h.service.GetToken(r)
 	if e != nil || req == "" {
-		response.Error(w, errify.NewBadRequestError(e.Error(),
+		response.Error(w, errify.NewUnauthorizedError(e.Error(),
 			service.ErrInvalidCredentials.Error(), "CheckAuth"), h.log)
 		return
 	}
@@ -103,7 +103,7 @@ func (h *handler) CheckAuth(w http.ResponseWriter, r *http.Request) {
 func (h *handler) Logout(w http.ResponseWriter, r *http.Request) {
 	req, e := h.service.GetToken(r)
 	if e != nil || req == "" {
-		response.Error(w, errify.NewBadRequestError(e.Error(),
+		response.Error(w, errify.NewUnauthorizedError(e.Error(),
 			service.ErrInvalidCredentials.Error(), "CheckAuth"), h.log)
 		return
 	}
