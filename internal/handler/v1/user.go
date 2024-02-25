@@ -3,10 +3,10 @@ package v1
 import (
 	"auth/internal/domain"
 	hr "auth/internal/handler"
-	"auth/pkg/errify"
-	"auth/pkg/response"
 	"context"
 	"encoding/json"
+	"github.com/Linkify-Company/common_utils/errify"
+	"github.com/Linkify-Company/common_utils/response"
 	"github.com/gorilla/mux"
 	"net/http"
 	"strconv"

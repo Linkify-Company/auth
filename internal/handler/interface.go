@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"auth/pkg/errify"
-	"auth/pkg/logger"
+	"github.com/Linkify-Company/common_utils/errify"
+	"github.com/Linkify-Company/common_utils/logger"
 	"github.com/gorilla/mux"
 )
 

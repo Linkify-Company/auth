@@ -2,8 +2,8 @@ package redis
 
 import (
 	"auth/internal/config"
-	"auth/pkg/errify"
 	"fmt"
+	"github.com/Linkify-Company/common_utils/errify"
 	"github.com/go-redis/redis"
 	"os"
 	"strconv"

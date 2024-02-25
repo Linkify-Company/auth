@@ -2,10 +2,10 @@ package postgres
 
 import (
 	"auth/internal/config"
-	"auth/pkg/errify"
-	"auth/pkg/logger"
 	"context"
 	"fmt"
+	"github.com/Linkify-Company/common_utils/errify"
+	"github.com/Linkify-Company/common_utils/logger"
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"os"

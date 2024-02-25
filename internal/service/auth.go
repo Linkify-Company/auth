@@ -4,10 +4,10 @@ import (
 	"auth/internal/config"
 	"auth/internal/domain"
 	"auth/internal/repository"
-	"auth/pkg/errify"
-	"auth/pkg/logger"
 	"context"
 	"errors"
+	"github.com/Linkify-Company/common_utils/errify"
+	"github.com/Linkify-Company/common_utils/logger"
 	"golang.org/x/crypto/bcrypt"
 	"os"
 )
