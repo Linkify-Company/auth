@@ -14,8 +14,8 @@ import (
 )
 
 type CheckAuthResponse struct {
-	User  *domain.AuthData `json:"user,omitempty"`
-	Token string           `json:"token,omitempty"`
+	*domain.AuthData
+	Token string `json:"token,omitempty"`
 }
 
 func initAuth(h *handler, router *mux.Router) {
@@ -87,8 +87,8 @@ func (h *handler) CheckAuth(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 			response.Ok(w, response.NewSend(CheckAuthResponse{
-				User:  user,
-				Token: token,
+				AuthData: user,
+				Token:    token,
 			}, "Authorization successfully", http.StatusOK), h.log)
 			return
 		}
@@ -96,7 +96,7 @@ func (h *handler) CheckAuth(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	response.Ok(w, response.NewSend(CheckAuthResponse{
-		User: user,
+		AuthData: user,
 	}, "Authorization successfully", http.StatusOK), h.log)
 }
 
