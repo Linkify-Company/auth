@@ -20,7 +20,7 @@ func initUser(h *handler, router *mux.Router) {
 }
 
 func (h *handler) AddUser(w http.ResponseWriter, r *http.Request) {
-	var req *domain.User
+	var req domain.User
 	e := json.NewDecoder(r.Body).Decode(&req)
 	if e != nil {
 		response.Error(w, errify.NewBadRequestError(e.Error(), hr.ValidationError, "AddUser").
@@ -37,7 +37,7 @@ func (h *handler) AddUser(w http.ResponseWriter, r *http.Request) {
 	ctx, cancel := context.WithTimeout(r.Context(), h.cfg.ContextTimeout)
 	defer cancel()
 
-	id, err := h.service.AddUser(ctx, req)
+	id, err := h.service.AddUser(ctx, h.service.Email, &req)
 	if err != nil {
 		response.Error(w, err.JoinLoc("AddUser"), h.log)
 		return

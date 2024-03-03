@@ -18,7 +18,7 @@ type tracer struct {
 }
 
 func (t tracer) TraceQueryStart(ctx context.Context, conn *pgx.Conn, data pgx.TraceQueryStartData) context.Context {
-	t.log.Infof(strings.ReplaceAll(data.SQL, "\n", " "))
+	t.log.Debugf(strings.ReplaceAll(data.SQL, "\n", " "))
 	return ctx
 }
 

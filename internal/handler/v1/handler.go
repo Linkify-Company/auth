@@ -40,6 +40,7 @@ func (h *handler) Init(router *mux.Router) {
 
 	initUser(h, version)
 	initAuth(h, version)
+	initEmail(h, version)
 }
 
 func (h *handler) panicMiddleware(next http.Handler) http.Handler {

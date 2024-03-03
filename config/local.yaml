@@ -14,3 +14,7 @@ server:
   read-timeout: 3s
   port: 8091
   host: localhost
+
+email_service:
+  smtp_server: smtp.gmail.com
+  smtp_port: 465 #587

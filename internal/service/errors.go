@@ -7,4 +7,5 @@ var (
 	UserNotExist          = errors.New("user is not exist")
 	ErrInvalidCredentials = errors.New("invalid credentials")
 	ErrTokenExpired       = errors.New("token expired")
+	MailConfirmationError = errors.New("mail confirmation error")
 )

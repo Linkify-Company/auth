@@ -17,6 +17,7 @@ type AuthService struct {
 	transaction repository.Transaction
 	userRepos   repository.User
 	authRepos   repository.Auth
+	emailRepos  repository.Email
 }
 
 func NewAuthService(
@@ -24,12 +25,14 @@ func NewAuthService(
 	transaction repository.Transaction,
 	userRepos repository.User,
 	authRepos repository.Auth,
+	emailRepos repository.Email,
 ) Auth {
 	return &AuthService{
 		log:         log,
 		transaction: transaction,
 		userRepos:   userRepos,
 		authRepos:   authRepos,
+		emailRepos:  emailRepos,
 	}
 }
 
@@ -38,6 +41,8 @@ func (m *AuthService) Authorization(ctx context.Context, auth *domain.Auth, cfg 
 	if err != nil {
 		return "", errify.NewInternalServerError(err.Error(), "Authorization/Begin")
 	}
+	defer m.transaction.Rollback(ctx, tx)
+
 	user, err := m.userRepos.UserByEmail(ctx, tx, auth.Email)
 	if err != nil {
 		if errors.Is(err, repository.UserNotExist) {

@@ -3,15 +3,11 @@ package repository
 import (
 	"auth/internal/domain"
 	"context"
+	"github.com/Linkify-Company/common_utils/errify"
 	"github.com/go-redis/redis"
 	"github.com/jackc/pgx/v5"
 	"time"
 )
-
-type Repository struct {
-	User
-	Auth
-}
 
 type User interface {
 	AddUser(ctx context.Context, tx pgx.Tx, email string, role domain.Role, passHash []byte) (int, error)
@@ -26,6 +22,12 @@ type Auth interface {
 	RemoveAuthorization(ctx context.Context, tx redis.Pipeliner, accessToken string) error
 }
 
+type Email interface {
+	IsExist(ctx context.Context, email string) bool
+	Set(ctx context.Context, email string, code int) errify.IError
+	IsValid(ctx context.Context, email string, code int) bool
+}
+
 type Transaction interface {
 	Begin(ctx context.Context) (pgx.Tx, error)
 	Rollback(ctx context.Context, tx pgx.Tx) error
@@ -36,9 +38,16 @@ type Transaction interface {
 	RedisClient(ctx context.Context) *redis.Client
 }
 
+type Repository struct {
+	User
+	Auth
+	Email
+}
+
 func NewRepository() *Repository {
 	return &Repository{
-		User: NewUserRepos(),
-		Auth: NewAuthRepo(),
+		User:  NewUserRepos(),
+		Auth:  NewAuthRepo(),
+		Email: NewEmailRepos(),
 	}
 }

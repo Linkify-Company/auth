@@ -13,7 +13,6 @@ func NewCookiesService() Cookies {
 
 const (
 	Authorization = "Authorization"
-	TokenNil      = ""
 )
 
 func (m *CookiesService) SetToken(w http.ResponseWriter, token string) {
