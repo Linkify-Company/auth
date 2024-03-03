@@ -13,9 +13,10 @@ import (
 )
 
 type User interface {
-	AddUser(ctx context.Context, user *domain.User) (int, errify.IError)
+	AddUser(ctx context.Context, emailService Email, user *domain.User) (int, errify.IError)
 	GetUserByID(ctx context.Context, id int) (*domain.User, errify.IError)
 	GetUserByEmail(ctx context.Context, email string) (*domain.User, errify.IError)
+	PushCodeInEmail(ctx context.Context, emailService Email, email string) errify.IError
 }
 
 type Auth interface {
@@ -30,10 +31,15 @@ type Cookies interface {
 	GetToken(r *http.Request) (string, error)
 }
 
+type Email interface {
+	Send(ctx context.Context, title string, toEmail string, message string) errify.IError
+}
+
 type Service struct {
 	User
 	Auth
 	Cookies
+	Email
 
 	log logger.Logger
 }
@@ -43,13 +49,15 @@ func NewService(
 	pool *pgxpool.Pool,
 	redisClient *redis.Client,
 	repos *repository.Repository,
+	emailConfig *config.EmailServiceConfig,
 ) *Service {
 	transaction := repository.NewTransactionsRepos(pool, redisClient)
 
 	return &Service{
-		User:    NewUserService(log, transaction, repos),
-		Auth:    NewAuthService(log, transaction, repos, repos),
+		User:    NewUserService(log, transaction, repos, repos),
+		Auth:    NewAuthService(log, transaction, repos, repos, repos),
 		Cookies: NewCookiesService(),
+		Email:   NewEmailService(log, repos, *emailConfig),
 		log:     log,
 	}
 }

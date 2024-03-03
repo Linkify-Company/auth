@@ -26,14 +26,18 @@ const (
 	RedisPort          = "REDIS_PORT"
 	RedisPassword      = "REDIS_PASSWORD"
 	RedisDatabaseIndex = "REDIS_DB_INDEX"
+
+	AuthEmail            = "AUTH_EMAIL"
+	AuthEmailCredentials = "AUTH_EMAIL_CREDENTIALS"
 )
 
 type (
 	Config struct {
-		Application ApplicationConfig `yaml:"application" env-required:"true"`
-		Handler     HandlerConfig     `yaml:"handler" env-required:"true"`
-		Token       TokenConfig       `yaml:"token" env-required:"true"`
-		Server      ServerConfig      `yaml:"server" env-required:"true"`
+		Application  ApplicationConfig  `yaml:"application" env-required:"true"`
+		Handler      HandlerConfig      `yaml:"handler" env-required:"true"`
+		Token        TokenConfig        `yaml:"token" env-required:"true"`
+		Server       ServerConfig       `yaml:"server" env-required:"true"`
+		EmailService EmailServiceConfig `yaml:"email_service" env-required:"true"`
 	}
 
 	ApplicationConfig struct {
@@ -55,6 +59,11 @@ type (
 	TokenConfig struct {
 		AccessTTL  time.Duration `yaml:"access_ttl" env-required:"true"`
 		RefreshTTL time.Duration `yaml:"refresh_ttl" env-required:"true"`
+	}
+
+	EmailServiceConfig struct {
+		SmtpServer string `yaml:"smtp_server" env-required:"true"`
+		SmtpPort   int    `yaml:"smtp_port" env-required:"true"`
 	}
 )
 
@@ -101,6 +110,8 @@ func fetchConfigPath() string {
 func checkEnv() {
 	var envKeys = []string{
 		Secret,
+		AuthEmail,
+		AuthEmailCredentials,
 	}
 	for _, key := range envKeys {
 		v := os.Getenv(key)

@@ -36,7 +36,11 @@ func main() {
 	}
 
 	authService := service.NewService(
-		log, pool, redisClient, repository.NewRepository(),
+		log,
+		pool,
+		redisClient,
+		repository.NewRepository(),
+		&cfg.EmailService,
 	)
 
 	router := handler.Run(

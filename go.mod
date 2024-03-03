@@ -14,6 +14,7 @@ require (
 	github.com/ilyakaznacheev/cleanenv v1.5.0
 	github.com/jackc/pgx/v5 v5.5.3
 	github.com/joho/godotenv v1.5.1
+	github.com/wneessen/go-mail v0.4.1
 	golang.org/x/crypto v0.19.0
 )
 

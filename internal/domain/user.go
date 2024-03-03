@@ -15,6 +15,8 @@ type User struct {
 	Email string `json:"email" validate:"required,email"`
 	// Password пользователя
 	Password string `json:"password"`
+	// AuthorizationCode Авторизационный код для подтверждения почты (email)
+	AuthorizationCode int `json:"authorization_code" validate:"required"`
 
 	Role Role `json:"-"`
 }
